@@ -7,7 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="block5-profiles" />
         <module name="block5-properties" />
+        <module name="block5-logging" />
         <module name="block3-maven-package" />
         <module name="demo" />
         <module name="block1-process-file-and-streams" />
@@ -15,12 +17,15 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="block5-command-line-runner" target="17" />
+      <module name="block5-profiles" target="19" />
       <module name="Prueba" target="19" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="block5-command-line-runner" options="-parameters" />
+      <module name="block5-logging" options="-parameters" />
+      <module name="block5-profiles" options="-parameters" />
       <module name="block5-properties" options="-parameters" />
       <module name="demo" options="-parameters" />
     </option>
