@@ -12,7 +12,7 @@ public class Block5PropertiesApplication implements CommandLineRunner {
 	private String saludo;
 
 	@Value("${my.number}")
-	private int numero;
+	private String numero;
 
 	@Value("${new.property:new.property no tiene valor}")
 	private String nuevaPropiedad;
@@ -27,5 +27,4 @@ public class Block5PropertiesApplication implements CommandLineRunner {
 		System.out.println("El valor de my.number es: " + numero);
 		System.out.println("El valor de new.property es: " + nuevaPropiedad);
 	}
-
 }
