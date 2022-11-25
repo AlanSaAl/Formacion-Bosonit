@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Formacion-Bosonit.iml" filepath="$PROJECT_DIR$/.idea/Formacion-Bosonit.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../block5-profiles/block5-profiles.iml" filepath="$PROJECT_DIR$/../block5-profiles/block5-profiles.iml" />
     </modules>
   </component>
 </project>
