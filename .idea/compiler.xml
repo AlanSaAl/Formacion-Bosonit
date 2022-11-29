@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="block5-logging" />
+        <module name="block7-crud" />
         <module name="block5-profiles" />
         <module name="block5-properties" />
         <module name="block6-simple-controllers" />
