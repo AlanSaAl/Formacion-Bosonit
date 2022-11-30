@@ -18,6 +18,12 @@
         <module name="block1-process-file-and-streams" />
         <module name="block6-path-variable-headers" />
       </profile>
+      <profile name="Annotation profile for block7-crud-validation" enabled="true">
+        <sourceOutputDir name="../../block7-crud-validation/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../block7-crud-validation/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="block7-crud-validation" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="block5-command-line-runner" target="17" />
@@ -33,6 +39,8 @@
       <module name="block6-path-variable-headers" options="-parameters" />
       <module name="block6-person-controllers" options="-parameters" />
       <module name="block6-simple-controllers" options="-parameters" />
+      <module name="block7-crud" options="-parameters" />
+      <module name="block7-crud-validation" options="-parameters" />
       <module name="demo" options="-parameters" />
     </option>
   </component>
