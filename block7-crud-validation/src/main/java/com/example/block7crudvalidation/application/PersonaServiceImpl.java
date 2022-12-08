@@ -5,6 +5,7 @@ import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
 import com.example.block7crudvalidation.domain.Persona;
 import com.example.block7crudvalidation.exceptions.EntityNotFoundException;
 import com.example.block7crudvalidation.exceptions.UnprocessableEntityException;
+import com.example.block7crudvalidation.mapper.IPersonaMapper;
 import com.example.block7crudvalidation.repository.IPersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -36,29 +37,30 @@ public class PersonaServiceImpl implements IPersonaService{
     }
 
     @Override
-    public PersonaOutputDto addPersona(PersonaInputDto persona) {
-        validarDatosPersona(persona);
-        return personaRepository.save(new Persona(persona)).personaToPersonaOutputDto();
+    public Persona addPersona(PersonaInputDto personaInput) {
+        validarDatosPersona(personaInput);
+        Persona persona = IPersonaMapper.mapper.personaInputDtoToPersona(personaInput);
+        return personaRepository.save(persona);
     }
 
     @Override
-    public PersonaOutputDto getPersonaById(int id) {
+    public Persona getPersonaById(int id) {
         try {
-            return personaRepository.findById(id).orElseThrow().personaToPersonaOutputDto();
+            return personaRepository.findById(id).orElseThrow();
         } catch (NoSuchElementException e) {
             throw new EntityNotFoundException("No se encontró el id: " + id);
         }
     }
 
     @Override
-    public List<PersonaOutputDto> getPersonaByUsuario(String usuario) {
-        return personaRepository.findByUsuario(usuario).stream().map(Persona::personaToPersonaOutputDto).toList();
+    public Persona getPersonaByUsuario(String usuario) {
+        return personaRepository.findByUsuario(usuario);
     }
 
     @Override
-    public Iterable<PersonaOutputDto> getAllPersonas(int pageNumber, int pageSize) {
+    public List<PersonaOutputDto> getAllPersonas(int pageNumber, int pageSize) {
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
-        return personaRepository.findAll(pageRequest).getContent().stream().map(Persona::personaToPersonaOutputDto).toList();
+        return personaRepository.findAll(pageRequest).stream().map(IPersonaMapper.mapper::personaToPersonaOutputDto).toList();
     }
 
     @Override

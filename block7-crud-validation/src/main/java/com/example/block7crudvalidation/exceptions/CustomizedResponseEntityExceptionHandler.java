@@ -15,7 +15,7 @@ import java.util.Date;
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UnprocessableEntityException.class)
     public ResponseEntity<CustomError> handleValidationExceptions(UnprocessableEntityException e) {
-        Logger logger = LoggerFactory.getLogger(PersonaController.class);
+        Logger logger = LoggerFactory.getLogger(CustomizedResponseEntityExceptionHandler.class);
         logger.error(e.getMessage());
         CustomError customError = new CustomError(new Date(), HttpStatus.UNPROCESSABLE_ENTITY.value(), e.getMessage());
         return new ResponseEntity<CustomError>(customError, HttpStatus.UNPROCESSABLE_ENTITY);
@@ -23,7 +23,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<CustomError> handleNotFoundException(EntityNotFoundException e) {
-        Logger logger = LoggerFactory.getLogger(PersonaController.class);
+        Logger logger = LoggerFactory.getLogger(CustomizedResponseEntityExceptionHandler.class);
         logger.error(e.getMessage());
         CustomError customError = new CustomError(new Date(), HttpStatus.NOT_FOUND.value(), e.getMessage());
         return new ResponseEntity<CustomError>(customError, HttpStatus.NOT_FOUND);
