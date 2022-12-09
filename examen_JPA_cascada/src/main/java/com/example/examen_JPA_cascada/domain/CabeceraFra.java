@@ -1,29 +1,41 @@
 package com.example.examen_JPA_cascada.domain;
 
-import com.example.examen_JPA_cascada.controller.dto.ClienteOutputDto;
+import com.example.examen_JPA_cascada.controller.dto.FacturaOutputDto;
+import com.example.examen_JPA_cascada.mapper.IClienteMapper;
+import com.example.examen_JPA_cascada.mapper.ILineasFraMapper;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
 @Getter
-// Clase para la tabla cabeceras de las facturas
+@ToString
 public class CabeceraFra {
     @Id
     @GeneratedValue
     int id;
 
-    // Codigo de cliente
-    @Column(name = "cli_codi")
-    int cliCodi;
+    @ManyToOne
+    @JoinColumn(name = "cli_codi")
+    Cliente cliente;
 
-    // Importe total de la factura
     @Column(name = "importe_fra")
     Double importeFra;
 
-    // Muchas facturas tienen un cliente
-    /*@ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_cliente")
-    Cliente cliente;*/
+    @OneToMany(mappedBy = "cabeceraFra", cascade = CascadeType.ALL)
+    List<LineasFra> lineasFras = new ArrayList<>();
+
+    public FacturaOutputDto cabeceraFraToFacturaOutputDto() {
+        return new FacturaOutputDto(
+                this.id,
+                this.importeFra,
+                IClienteMapper.mapper.clienteToClienteOutputDto(this.cliente),
+                this.lineasFras.stream().map(lineasFra -> ILineasFraMapper.mapper.lineasFraToLineaOutputDto(lineasFra)).toList()
+        );
+    }
 }

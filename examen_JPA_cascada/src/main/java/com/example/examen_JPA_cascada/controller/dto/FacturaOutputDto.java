@@ -1,21 +1,18 @@
 package com.example.examen_JPA_cascada.controller.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
 import java.util.List;
 
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class FacturaOutputDto {
     int id;
 
     double importeFra = 0;
 
+    @JsonProperty
     ClienteOutputDto clienteOutput;
 
     List<LineaOutputDto> lineaOutputDto;

@@ -2,12 +2,9 @@ package com.example.examen_JPA_cascada;
 
 import com.example.examen_JPA_cascada.application.CabeceraFraServiceImpl;
 import com.example.examen_JPA_cascada.application.ClienteServiceImpl;
-import com.example.examen_JPA_cascada.application.LineasFraServiceImpl;
-import com.example.examen_JPA_cascada.controller.dto.ClienteInputDto;
-import com.example.examen_JPA_cascada.controller.dto.FacturaInputDto;
-import com.example.examen_JPA_cascada.controller.dto.LineaInputDto;
 import com.example.examen_JPA_cascada.domain.CabeceraFra;
 import com.example.examen_JPA_cascada.domain.Cliente;
+import com.example.examen_JPA_cascada.domain.LineasFra;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,8 +19,6 @@ public class ExamenJpaCascadaApplication implements CommandLineRunner {
 	ClienteServiceImpl clienteService;
 	@Autowired
 	CabeceraFraServiceImpl cabeceraFraService;
-	@Autowired
-	LineasFraServiceImpl lineasFraService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ExamenJpaCascadaApplication.class, args);
@@ -31,16 +26,30 @@ public class ExamenJpaCascadaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Cliente cliente = clienteService.addCliente(new ClienteInputDto("Alan"));
+		Cliente cliente = new Cliente();
+		cliente.setNombre("Alan");
+		cliente = clienteService.addCliente(cliente);
 
-		CabeceraFra factura = cabeceraFraService.addCabeceraFra(new FacturaInputDto(cliente.getId(), 100.00));
+		CabeceraFra factura = new CabeceraFra();
 
-		LineaInputDto lineaInicialUno = new LineaInputDto(factura.getId(), "coca-cola", 1.00, 15.00);
-		LineaInputDto lineaInicialDos = new LineaInputDto(factura.getId(), "Sabritas moradas", 1.00, 17.00);
-		List<LineaInputDto> listaDeLineas = new ArrayList<>();
+		LineasFra lineaUno = new LineasFra();
+		lineaUno.setProNomb("coca-cola");
+		lineaUno.setCantidad(1.00);
+		lineaUno.setPrecio(15.00);
+		lineaUno.setCabeceraFra(factura);
 
-		listaDeLineas.add(lineaInicialUno);
-		listaDeLineas.add(lineaInicialDos);
-		lineasFraService.addLineaFra(listaDeLineas);
+		LineasFra lineaDos = new LineasFra();
+		lineaDos.setProNomb("Sabritas moradas");
+		lineaDos.setCantidad(1.00);
+		lineaDos.setPrecio(17.00);
+		lineaDos.setCabeceraFra(factura);
+
+		List<LineasFra> lineasLista = new ArrayList<>();
+		lineasLista.add(lineaUno);
+		lineasLista.add(lineaDos);
+
+		factura.setImporteFra(12.00);
+		factura.setLineasFras(lineasLista);
+		cabeceraFraService.addCabeceraFra(factura, cliente.getId());
 	}
 }

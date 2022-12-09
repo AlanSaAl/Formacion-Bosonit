@@ -12,7 +12,7 @@ import lombok.Setter;
 public class LineaInputDto {
     int idFra;
 
-    String ProNomb;
+    String proNomb;
 
     double cantidad;
 

@@ -6,12 +6,9 @@ import com.example.examen_JPA_cascada.domain.LineasFra;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import java.util.List;
-
 @Mapper
 public interface ILineasFraMapper {
     ILineasFraMapper mapper = Mappers.getMapper(ILineasFraMapper.class);
     LineasFra lineaInputDtoToLineasFra(LineaInputDto lineaInput);
     LineaOutputDto lineasFraToLineaOutputDto(LineasFra lineasFra);
-    List<LineasFra> listaLineaInputDtoTolistaLineasFra(List<LineaInputDto> listaInput);
 }
