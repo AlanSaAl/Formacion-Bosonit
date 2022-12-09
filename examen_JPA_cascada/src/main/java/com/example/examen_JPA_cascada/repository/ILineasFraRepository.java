@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ILineasFraRepository extends JpaRepository<LineasFra, Integer> {
     List<LineasFra> findByIdFra(int id);
+    List<LineasFra> findAllByIdFra(int idFra);
 }

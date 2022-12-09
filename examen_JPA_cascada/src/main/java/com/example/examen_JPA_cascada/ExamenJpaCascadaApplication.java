@@ -18,7 +18,6 @@ import java.util.List;
 
 @SpringBootApplication
 public class ExamenJpaCascadaApplication implements CommandLineRunner {
-
 	@Autowired
 	ClienteServiceImpl clienteService;
 	@Autowired
@@ -32,14 +31,11 @@ public class ExamenJpaCascadaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		ClienteInputDto clienteInicial = new ClienteInputDto("Chuchi");
-		Cliente cliente = clienteService.addCliente(clienteInicial);
+		Cliente cliente = clienteService.addCliente(new ClienteInputDto("Alan"));
 
-		FacturaInputDto facturaInicial = new FacturaInputDto(cliente.getId(), 100.00);
-		CabeceraFra factura = cabeceraFraService.addCabeceraFra(facturaInicial);
-		//factura.setClienteOutputDto(clienteService.getClienteById(cliente.getId()));
+		CabeceraFra factura = cabeceraFraService.addCabeceraFra(new FacturaInputDto(cliente.getId(), 100.00));
 
-		LineaInputDto lineaInicialUno = new LineaInputDto(factura.getId(), "coca", 1.00, 15.00);
+		LineaInputDto lineaInicialUno = new LineaInputDto(factura.getId(), "coca-cola", 1.00, 15.00);
 		LineaInputDto lineaInicialDos = new LineaInputDto(factura.getId(), "Sabritas moradas", 1.00, 17.00);
 		List<LineaInputDto> listaDeLineas = new ArrayList<>();
 
