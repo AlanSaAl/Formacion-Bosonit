@@ -4,15 +4,12 @@ import com.example.block7crudvalidation.application.PersonaServiceImpl;
 import com.example.block7crudvalidation.controller.dto.PersonaInputDto;
 import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
 import com.example.block7crudvalidation.domain.Persona;
-import com.example.block7crudvalidation.exceptions.EntityNotFoundException;
 import com.example.block7crudvalidation.mapper.IPersonaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 
 @RestController
@@ -29,7 +26,7 @@ public class PersonaController {
     @GetMapping("id/{id}")
     public PersonaOutputDto getPersonaById(@PathVariable int id, @RequestParam(value = "outputType", defaultValue = "simple") String outputType) {
         return Objects.equals(outputType, "simple") ? IPersonaMapper.mapper.personaToPersonaOutputDto(personaService.getPersonaById(id)) :
-                Objects.equals(outputType, "full") ? IPersonaMapper.mapper.personaToPersonaFullOutputDto(personaService.getPersonaById(id)) : null;
+                Objects.equals(outputType, "full") ? personaService.getPersonaById(id).personaToPersonaFullOutputDto() : null;
     }
 
     @GetMapping("usuario/{usuario}")

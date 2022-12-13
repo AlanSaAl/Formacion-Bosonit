@@ -22,14 +22,16 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<StudentFullOutputDto> addStudent(@RequestBody StudentInputDto studentInput) {
-        Student student = studentService.addStudent(studentInput);
+        Student student = studentService.addStudent(IStudentMapper.mapper.studentInputDtoToStudent(studentInput),
+                                                    studentInput.getIdPersona(),
+                                                    studentInput.getIdProfesor());
         return ResponseEntity.status(HttpStatus.CREATED).body(IStudentMapper.mapper.studentToStudentFullOutputDto(student));
     }
 
     @GetMapping("{id}")
     public StudentOutputDto getStudentById(@PathVariable String id, @RequestParam(value = "outputType", defaultValue = "simple") String outputType) {
-        return Objects.equals(outputType, "simple") ? IStudentMapper.mapper.studentToStudentOutputDto(studentService.getStudentById(id)) :
-                Objects.equals(outputType, "full") ? IStudentMapper.mapper.studentToStudentFullOutputDto(studentService.getStudentById(id)) : null;
+        return Objects.equals(outputType, "simple") ? studentService.getStudentById(id).studentToStudentOutputDto() :
+                Objects.equals(outputType, "full") ? studentService.getStudentById(id).studentToStudentFullOutputDto() : null;
     }
 
     @GetMapping
@@ -38,9 +40,10 @@ public class StudentController {
         return studentService.getAllStudents(pageNumber, pageSize);
     }
 
-    @PutMapping
-    public ResponseEntity<StudentOutputDto> updateStudentById(@RequestBody StudentInputDto studentInput) {
-        return ResponseEntity.ok().body(IStudentMapper.mapper.studentToStudentOutputDto(studentService.updateStudentById(studentInput)));
+    @PutMapping("{idStudent}")
+    public ResponseEntity<StudentOutputDto> updateStudentById(@PathVariable String idStudent, @RequestBody StudentInputDto studentInput) {
+        Student student = IStudentMapper.mapper.studentInputDtoToStudent(studentInput);
+        return ResponseEntity.ok().body(IStudentMapper.mapper.studentToStudentOutputDto(studentService.updateStudentById(idStudent, student)));
     }
 
     @DeleteMapping("{id}")

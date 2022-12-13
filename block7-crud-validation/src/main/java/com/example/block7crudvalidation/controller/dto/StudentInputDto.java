@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StudentInputDto {
-    String idStudent;
     int numHoursWeek;
     String coments;
     String branch;

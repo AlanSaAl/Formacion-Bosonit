@@ -22,14 +22,14 @@ public class ProfesorController {
 
     @PostMapping
     public ResponseEntity<ProfesorFullOutputDto> addProfesor(@RequestBody ProfesorInputDto profesorInput) {
-        Profesor profesor = profesorService.addProfesor(profesorInput);
-        return ResponseEntity.status(HttpStatus.CREATED).body(IProfesorMapper.mapper.profesorToProfesorFullOutputDto(profesor));
+        Profesor profesor = profesorService.addProfesor(IProfesorMapper.mapper.profesorInputDtoToProfesor(profesorInput), profesorInput.getIdPersona());
+        return ResponseEntity.status(HttpStatus.CREATED).body(profesor.profesorToProfesorFullOutputDto());
     }
 
     @GetMapping("{id}")
     public ProfesotOutputDto getProfesorById(@PathVariable String id, @RequestParam(value = "outputType", defaultValue = "simple") String outputType) {
-        return Objects.equals(outputType, "simple") ? IProfesorMapper.mapper.profesorToProfesorOutputDto(profesorService.getProfesorById(id)) :
-                Objects.equals(outputType, "full") ? IProfesorMapper.mapper.profesorToProfesorFullOutputDto(profesorService.getProfesorById(id)) : null;
+        return Objects.equals(outputType, "simple") ? profesorService.getProfesorById(id).profesorToProfesorOutputDto() :
+                Objects.equals(outputType, "full") ? profesorService.getProfesorById(id).profesorToProfesorFullOutputDto() : null;
     }
 
     @GetMapping
@@ -38,8 +38,14 @@ public class ProfesorController {
         return profesorService.getAllProfesores(pageNumber, pageSize);
     }
 
-    @PutMapping
-    public ResponseEntity<ProfesotOutputDto> updateProfesorById(@RequestBody ProfesorInputDto profesorInput) {
-        return ResponseEntity.ok().body(IProfesorMapper.mapper.profesorToProfesorOutputDto(profesorService.updateProfesorById(profesorInput)));
+    @PutMapping("{idProf}")
+    public ResponseEntity<ProfesotOutputDto> updateProfesorById(@PathVariable String idProf, @RequestBody ProfesorInputDto profesorInput) {
+        Profesor profesor = IProfesorMapper.mapper.profesorInputDtoToProfesor(profesorInput);
+        return ResponseEntity.ok().body(IProfesorMapper.mapper.profesorToProfesorOutputDto(profesorService.updateProfesorById(idProf, profesor)));
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteProfesorById(@PathVariable String id) {
+        profesorService.deleteProfesorById(id);
     }
 }

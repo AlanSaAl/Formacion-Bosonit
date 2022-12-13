@@ -10,15 +10,26 @@ import java.util.Date;
 @NoArgsConstructor
 public class PersonaOutputDto {
     int id;
+
     String usuario;
+
     String password;
+
     String name;
+
     String surname;
+
     String company_email;
+
     String personal_email;
+
     String city;
+
     boolean active;
+
     Date created_date;
+
     String image_url;
+
     Date termination_date;
 }

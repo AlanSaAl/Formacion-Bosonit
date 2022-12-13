@@ -10,7 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProfesorInputDto {
-    String idProfesor;
     String coments;
     String branch;
     int idPersona;

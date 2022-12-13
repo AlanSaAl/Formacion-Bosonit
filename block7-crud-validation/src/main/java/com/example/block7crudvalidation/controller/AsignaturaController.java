@@ -34,8 +34,13 @@ public class AsignaturaController {
         return IAsignaturaMapper.mapper.asignaturaToAsignaturaOutputDto(asignaturaService.getAsignaturaById(id));
     }
 
-    @PutMapping
+    @PutMapping("{id}")
     public ResponseEntity<AsignaturaOutputDto> updateAsignatura(@PathVariable String id, @RequestBody AsignaturaInputDto asignaturaInput) {
         return ResponseEntity.ok().body(IAsignaturaMapper.mapper.asignaturaToAsignaturaOutputDto(asignaturaService.updateAsignatura(id, asignaturaInput)));
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteAsignaturaById(@PathVariable String id) {
+        asignaturaService.deleteAsignaturaById(id);
     }
 }

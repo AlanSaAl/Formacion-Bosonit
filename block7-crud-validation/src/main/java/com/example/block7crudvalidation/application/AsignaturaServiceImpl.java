@@ -23,6 +23,8 @@ public class AsignaturaServiceImpl implements IAsignaturaService{
     IAsignaturaRepository asignaturaRepository;
     @Autowired
     IStudentRepository studentRepository;
+    @Autowired
+    IStudentService studentService;
 
     public void validarDatosAsignatura(AsignaturaInputDto asignaturaInput) {
         try {
@@ -35,14 +37,18 @@ public class AsignaturaServiceImpl implements IAsignaturaService{
     @Override
     public Asignatura addAsignatura(AsignaturaInputDto asignaturaInput) {
         validarDatosAsignatura(asignaturaInput);
+
         try {
-            Student student = studentRepository.findById(asignaturaInput.getIdStudent()).orElseThrow();
+            Student student = studentService.getStudentById(asignaturaInput.getIdStudent());
             Asignatura asignatura = IAsignaturaMapper.mapper.asignaturaInputDtoToAsignatura(asignaturaInput);
+
             asignatura.setStudent(student);
-            List<Asignatura> listaAsignaturas = student.getAsignatura();
+            List<Asignatura> listaAsignaturas = student.getAsignaturaList();
             listaAsignaturas.add(asignatura);
-            student.setAsignatura(listaAsignaturas);
-            studentRepository.save(student);
+            student.setAsignaturaList(listaAsignaturas);
+
+            studentService.updateStudentById(asignaturaInput.getIdStudent(), student);
+
             return asignaturaRepository.save(asignatura);
         } catch (NoSuchElementException e) {
             throw new EntityNotFoundException("No se encontró un estudiante con el id: " + asignaturaInput.getIdStudent());
@@ -73,6 +79,7 @@ public class AsignaturaServiceImpl implements IAsignaturaService{
 
     @Override
     public void deleteAsignaturaById(String id) {
-
+        getAsignaturaById(id);
+        asignaturaRepository.deleteById(id);
     }
 }

@@ -10,9 +10,15 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AsignaturaInputDto {
+    String id;
+
     String asignatura;
+
     String comments;
+
     Date initialDate;
+
     Date finishDate;
+
     String idStudent;
 }
