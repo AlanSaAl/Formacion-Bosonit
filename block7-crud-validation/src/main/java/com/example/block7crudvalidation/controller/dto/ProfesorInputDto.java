@@ -11,6 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProfesorInputDto {
     String coments;
+
     String branch;
+
     int idPersona;
 }

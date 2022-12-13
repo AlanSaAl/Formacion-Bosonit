@@ -3,7 +3,9 @@ package com.example.block7crudvalidation.controller;
 import com.example.block7crudvalidation.application.PersonaServiceImpl;
 import com.example.block7crudvalidation.controller.dto.PersonaInputDto;
 import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
+import com.example.block7crudvalidation.controller.dto.ProfesotOutputDto;
 import com.example.block7crudvalidation.domain.Persona;
+import com.example.block7crudvalidation.feign.IProfesorFeign;
 import com.example.block7crudvalidation.mapper.IPersonaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ import java.util.Objects;
 public class PersonaController {
     @Autowired
     PersonaServiceImpl personaService;
+    @Autowired
+    IProfesorFeign profesorFeign;
 
     @PostMapping
     public ResponseEntity<PersonaOutputDto> addPersona(@RequestBody PersonaInputDto personaInput) {
@@ -52,5 +56,10 @@ public class PersonaController {
         Persona persona = personaService.getPersonaById(id);
         personaService.deletePersona(id);
         return ResponseEntity.ok().body(IPersonaMapper.mapper.personaToPersonaOutputDto(persona));
+    }
+
+    @GetMapping("profesor/{id}")
+    public ProfesotOutputDto getProfesor(@PathVariable String id) {
+        return profesorFeign.getProfesorById(id, "simple");
     }
 }

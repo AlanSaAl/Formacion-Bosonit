@@ -1,0 +1,131 @@
+{
+	"info": {
+		"_postman_id": "25490bc2-ccb3-4dd7-a169-d719abea80a6",
+		"name": "Crud validation estudiante",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24589955"
+	},
+	"item": [
+		{
+			"name": "Añadir estudiante",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numHoursWeek\":\"4\",\r\n    \"coments\":\"Este es un comentario de estudiante\",\r\n    \"branch\":\"back\",\r\n    \"idPersona\":\"2\",\r\n    \"idProfesor\":\"2e4b522e-3197-498c-9228-92fe0e4d52e6\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Estudiante por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/student/cc04259a-7df4-4041-9838-e1d201e0b5ab?outputType=simple",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"cc04259a-7df4-4041-9838-e1d201e0b5ab"
+					],
+					"query": [
+						{
+							"key": "outputType",
+							"value": "simple"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todos los estudiantes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar Estudiante",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idStudent\":\"cec6c693-d8df-4e07-8c16-15ace4537e5b\",\r\n    \"numHoursWeek\":\"8\",\r\n    \"coments\":\"Este tambien es un comentario\",\r\n    \"branch\":\"backend\",\r\n    \"idPersona\":\"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar estudiante por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/student/cec6c693-d8df-4e07-8c16-15ace4537e5b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"cec6c693-d8df-4e07-8c16-15ace4537e5b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

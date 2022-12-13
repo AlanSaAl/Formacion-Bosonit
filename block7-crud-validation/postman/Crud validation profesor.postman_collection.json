@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "48bdd12e-f7d3-4e5d-a3a6-69e68383857b",
+		"name": "Crud validation profesor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24589955"
+	},
+	"item": [
+		{
+			"name": "Añadir profesor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"coments\":\"Comentario de profesor\",\r\n    \"branch\":\"back\",\r\n    \"idPersona\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/profesor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profesor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profesor por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/profesor/f0ff82af-dc89-4189-a143-edfa0712b1d8?outputType=simple",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profesor",
+						"f0ff82af-dc89-4189-a143-edfa0712b1d8"
+					],
+					"query": [
+						{
+							"key": "outputType",
+							"value": "simple"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todos los profesores",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/profesor?pageNumber=0&pageSize=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profesor"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar profesor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"coments\":\"Comentario modificado\",\r\n    \"branch\":\"front\",\r\n    \"idPersona\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/profesor/b664262d-8114-4d53-a36e-081e31c6bcc7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profesor",
+						"b664262d-8114-4d53-a36e-081e31c6bcc7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar profesor por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/profesor/b664262d-8114-4d53-a36e-081e31c6bcc7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"profesor",
+						"b664262d-8114-4d53-a36e-081e31c6bcc7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

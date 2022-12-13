@@ -3,7 +3,7 @@ package com.example.block7crudvalidation.domain;
 import com.example.block7crudvalidation.controller.dto.PersonaFullOutputDto;
 import com.example.block7crudvalidation.controller.dto.ProfesotOutputDto;
 import com.example.block7crudvalidation.mapper.IStudentMapper;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 import java.util.Date;

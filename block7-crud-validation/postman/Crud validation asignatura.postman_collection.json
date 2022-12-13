@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "3f0e4f00-c1c2-4b5d-a5fb-902cbf01523b",
+		"name": "Crud validation asignatura",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24589955"
+	},
+	"item": [
+		{
+			"name": "Añadir asignatura",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"asignatura\":\"back\",\r\n    \"comments\":\"Comentario de asignatura\",\r\n    \"initialDate\":\"2022-01-01\",\r\n    \"finishDate\":\"2022-02-02\",\r\n    \"idStudent\":\"1346aa05-e824-4a2a-8088-5f27d5aa83d0\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/asignatura",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"asignatura"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asignatura por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/asignatura/1cfbc305-7d2a-498a-bc59-bf8d41428738",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"asignatura",
+						"1cfbc305-7d2a-498a-bc59-bf8d41428738"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Todas las asignaturas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/asignatura",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"asignatura"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar asignatura",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"e9be8fae-3192-4690-a625-0dc802c34ff4\",\r\n    \"asignatura\":\"Big\",\r\n    \"comments\":\"Modificación del comentario\",\r\n    \"initialDate\":\"2023-11-02\",\r\n    \"finishDate\":\"2022-12-02\",\r\n    \"idStudent\":\"85e49b41-a027-45b3-bbf5-41273fa0458d\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/asignatura/e9be8fae-3192-4690-a625-0dc802c34ff4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"asignatura",
+						"e9be8fae-3192-4690-a625-0dc802c34ff4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar asignatura por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/asignatura/01285dc5-e7e6-4892-8261-df3b44a4cee3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"asignatura",
+						"01285dc5-e7e6-4892-8261-df3b44a4cee3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

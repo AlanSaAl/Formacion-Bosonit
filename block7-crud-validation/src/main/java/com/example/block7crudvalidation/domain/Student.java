@@ -4,7 +4,7 @@ import com.example.block7crudvalidation.controller.dto.StudentFullOutputDto;
 import com.example.block7crudvalidation.controller.dto.StudentOutputDto;
 import com.example.block7crudvalidation.mapper.IAsignaturaMapper;
 import com.example.block7crudvalidation.mapper.IPersonaMapper;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
