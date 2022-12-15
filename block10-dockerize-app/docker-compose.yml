@@ -1,0 +1,22 @@
+version: "3.2"
+
+services:
+  postgresql:
+    image: postgres:latest
+    container_name: postgresTest
+    environment:
+      - POSTGRES_PASSWORD=contrasena
+      - POSTGRES_DB=postgres
+    networks:
+      - mynetwork
+  block10-dockerize-app:
+    image: block10-dockerize-app:1
+    networks:
+      - mynetwork
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresql
+networks:
+  mynetwork:
+    driver: bridge

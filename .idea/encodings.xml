@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/block10-dockerize-app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/block10-dockerize-app/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/block3-maven-package/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/block3-maven-package/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/block5-command-line-runner/src/main/java" charset="UTF-8" />
@@ -22,6 +24,7 @@
     <file url="file://$PROJECT_DIR$/block7-crud/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/examen_JPA_cascada/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/examen_JPA_cascada/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../block10-dockerize-app/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../block7-crud-validation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../examen_JPA_cascada/src/main/java" charset="UTF-8" />
   </component>
