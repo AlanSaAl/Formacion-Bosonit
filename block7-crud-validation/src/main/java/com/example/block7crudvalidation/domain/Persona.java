@@ -37,7 +37,7 @@ public class Persona {
 
     private Date created_date;
 
-    private String image_url;
+    private String imagen_url;
 
     private Date termination_date;
 
@@ -62,7 +62,7 @@ public class Persona {
         personaFullOutputDto.setCity(this.city);
         personaFullOutputDto.setActive(this.active);
         personaFullOutputDto.setCreated_date(this.created_date);
-        personaFullOutputDto.setImage_url(this.image_url);
+        personaFullOutputDto.setImagen_url(this.imagen_url);
         personaFullOutputDto.setTermination_date(this.termination_date);
         return personaFullOutputDto;
     }

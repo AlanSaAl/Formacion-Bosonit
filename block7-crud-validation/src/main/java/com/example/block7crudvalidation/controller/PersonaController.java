@@ -22,6 +22,7 @@ public class PersonaController {
     @Autowired
     IProfesorFeign profesorFeign;
 
+    @CrossOrigin(origins = "https://cdpn.io/")
     @PostMapping
     public ResponseEntity<PersonaOutputDto> addPersona(@RequestBody PersonaInputDto personaInput) {
         return ResponseEntity.ok().body(IPersonaMapper.mapper.personaToPersonaOutputDto(personaService.addPersona(personaInput)));
@@ -38,6 +39,7 @@ public class PersonaController {
         return IPersonaMapper.mapper.personaToPersonaOutputDto(personaService.getPersonaByUsuario(usuario));
     }
 
+    @CrossOrigin(origins = "https://cdpn.io/")
     @GetMapping
     public List<PersonaOutputDto> getAllPersonas(@RequestParam(defaultValue = "0", required = false) int pageNumber,
                                                      @RequestParam(defaultValue = "4", required = false) int pageSize) {

@@ -30,7 +30,7 @@ public class PersonaInputDto {
 
     Date created_date;
 
-    String image_url;
+    String imagen_url;
 
     Date termination_date;
 }

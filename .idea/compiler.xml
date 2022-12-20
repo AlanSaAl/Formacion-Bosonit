@@ -21,6 +21,12 @@
         <module name="block6-path-variable-headers" />
         <module name="examen_JPA_cascada" />
       </profile>
+      <profile name="Annotation profile for block11-upload-download-files" enabled="true">
+        <sourceOutputDir name="../../block11-upload-download-files/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../block11-upload-download-files/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="block11-upload-download-files" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Prueba" target="19" />
@@ -29,6 +35,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="block10-dockerize-app" options="-parameters" />
+      <module name="block11-upload-download-files" options="-parameters" />
       <module name="block5-command-line-runner" options="-parameters" />
       <module name="block5-logging" options="-parameters" />
       <module name="block5-profiles" options="-parameters" />

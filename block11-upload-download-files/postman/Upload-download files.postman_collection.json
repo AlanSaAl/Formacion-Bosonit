@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "6ad5f278-2c59-4a4d-b0ba-86cbfae7644a",
+		"name": "Upload-download files",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24589955"
+	},
+	"item": [
+		{
+			"name": "Upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/alan.sandoval/Documents/Archivo prueba.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download por id o nombre",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/files/Archivo prueba.txt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"files",
+						"Archivo prueba.txt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cambiar path",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/setpath?path=src",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"setpath"
+					],
+					"query": [
+						{
+							"key": "path",
+							"value": "src"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
