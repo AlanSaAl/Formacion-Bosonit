@@ -11,8 +11,10 @@
         <module name="block5-logging" />
         <module name="block7-crud" />
         <module name="block5-profiles" />
+        <module name="block12-kafka-emisor" />
         <module name="block10-dockerize-app" />
         <module name="block3-maven-package" />
+        <module name="block12-kafka-consumidor" />
         <module name="block5-command-line-runner" />
         <module name="block5-properties" />
         <module name="block6-simple-controllers" />
@@ -20,11 +22,6 @@
         <module name="block1-process-file-and-streams" />
         <module name="block6-path-variable-headers" />
         <module name="examen_JPA_cascada" />
-      </profile>
-      <profile name="Annotation profile for block11-upload-download-files" enabled="true">
-        <sourceOutputDir name="../../block11-upload-download-files/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../../block11-upload-download-files/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
         <module name="block11-upload-download-files" />
       </profile>
     </annotationProcessing>
@@ -36,6 +33,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="block10-dockerize-app" options="-parameters" />
       <module name="block11-upload-download-files" options="-parameters" />
+      <module name="block12-kafka-consumidor" options="-parameters" />
+      <module name="block12-kafka-emisor" options="-parameters" />
       <module name="block5-command-line-runner" options="-parameters" />
       <module name="block5-logging" options="-parameters" />
       <module name="block5-profiles" options="-parameters" />

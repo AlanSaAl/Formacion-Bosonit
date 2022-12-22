@@ -1,0 +1,33 @@
+{
+	"info": {
+		"_postman_id": "12e91d7e-cc4a-42a8-8c4d-1d924c02bf8b",
+		"name": "KAfka",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24589955"
+	},
+	"item": [
+		{
+			"name": "Mensaje simple",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Mensaje del emisor"
+				},
+				"url": {
+					"raw": "http://localhost:8081/mensaje",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"mensaje"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
