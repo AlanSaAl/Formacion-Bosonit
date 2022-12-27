@@ -11,14 +11,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.time.LocalDate;
+import java.util.*;
 
 @Service
 public class PersonaServiceImpl implements IPersonaService{
     @Autowired
     IPersonaRepository personaRepository;
+    @PersistenceContext
+    EntityManager entityManager;
 
     public void validarDatosPersona(PersonaInputDto persona) {
         try {
@@ -71,5 +78,45 @@ public class PersonaServiceImpl implements IPersonaService{
         } catch (NoSuchElementException e) {
             throw new EntityNotFoundException(e.getMessage());
         }
+    }
+
+    @Override
+    public Iterable<PersonaOutputDto> getPersonaByFields(HashMap<String, Object> conditions, String orderBy, int pageNumber, int pageSize) {
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Persona> query = cb.createQuery(Persona.class);
+        Root<Persona> root = query.from(Persona.class);
+
+        List<Predicate> predicates = new ArrayList<>();
+
+        conditions.forEach((field, value) -> {
+            switch (field) {
+                case "usuario":
+                    predicates.add(cb.like(root.get(field), "%" + (String) value + "%"));
+                    break;
+                case "name":
+                    predicates.add(cb.like(root.get(field), "%" + (String) value + "%"));
+                    break;
+                case "surname":
+                    predicates.add(cb.like(root.get(field), "%" + (String) value + "%"));
+                    break;
+                case "created_date":
+                    predicates.add(cb.greaterThan(root.get(field), (LocalDate) value));
+                    break;
+            }
+        });
+
+        query.select(root).where(predicates.toArray(new Predicate[predicates.size()]));
+
+        if (Objects.equals(orderBy,"usuario")) query.orderBy(cb.asc(root.get("usuario")));
+        if (Objects.equals(orderBy, "name")) query.orderBy(cb.asc(root.get("name")));
+
+        return entityManager
+                .createQuery(query)
+                .setMaxResults(pageSize) //tamaño de la pagina
+                .setFirstResult(pageNumber) // posicion inicial
+                .getResultList()
+                .stream()
+                .map(IPersonaMapper.mapper::personaToPersonaOutputDto)
+                .toList();
     }
 }

@@ -1,6 +1,6 @@
 package com.example.block7crudvalidation.controller;
 
-import com.example.block7crudvalidation.application.PersonaServiceImpl;
+import com.example.block7crudvalidation.application.IPersonaService;
 import com.example.block7crudvalidation.controller.dto.PersonaInputDto;
 import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
 import com.example.block7crudvalidation.controller.dto.ProfesotOutputDto;
@@ -8,9 +8,12 @@ import com.example.block7crudvalidation.domain.Persona;
 import com.example.block7crudvalidation.feign.IProfesorFeign;
 import com.example.block7crudvalidation.mapper.IPersonaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +21,7 @@ import java.util.Objects;
 @RequestMapping("persona")
 public class PersonaController {
     @Autowired
-    PersonaServiceImpl personaService;
+    IPersonaService personaService;
     @Autowired
     IProfesorFeign profesorFeign;
 
@@ -63,5 +66,23 @@ public class PersonaController {
     @GetMapping("profesor/{id}")
     public ProfesotOutputDto getProfesor(@PathVariable String id) {
         return profesorFeign.getProfesorById(id, "simple");
+    }
+
+    @GetMapping("customquery")
+    public Iterable<PersonaOutputDto> getPersonaByFields(@RequestParam(required = false) String usuario,
+                                                         @RequestParam(required = false) String name,
+                                                         @RequestParam(required = false) String surname,
+                                                         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate createdDate,
+                                                         @RequestParam(required = false, defaultValue = "name") String orderBy,
+                                                         @RequestParam(defaultValue = "0", required = false) int pageNumber,
+                                                         @RequestParam(defaultValue = "4", required = false) int pageSize) {
+        HashMap<String, Object> conditions = new HashMap<>();
+
+        if(usuario != null) conditions.put("usuario", usuario);
+        if(name != null) conditions.put("name", name);
+        if(surname != null) conditions.put("surname", surname);
+        if(createdDate != null) conditions.put("created_date", createdDate);
+
+        return personaService.getPersonaByFields(conditions, orderBy, pageNumber, pageSize);
     }
 }

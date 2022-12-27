@@ -6,7 +6,7 @@ import com.example.block7crudvalidation.mapper.IStudentMapper;
 import javax.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -35,11 +35,11 @@ public class Persona {
 
     private boolean active;
 
-    private Date created_date;
+    private LocalDate created_date;
 
     private String imagen_url;
 
-    private Date termination_date;
+    private LocalDate termination_date;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Student student;

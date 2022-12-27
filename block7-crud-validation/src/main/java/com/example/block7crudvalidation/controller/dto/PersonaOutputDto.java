@@ -2,7 +2,7 @@ package com.example.block7crudvalidation.controller.dto;
 
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Setter
 @Getter
@@ -27,9 +27,9 @@ public class PersonaOutputDto {
 
     boolean active;
 
-    Date created_date;
+    LocalDate created_date;
 
     String imagen_url;
 
-    Date termination_date;
+    LocalDate termination_date;
 }

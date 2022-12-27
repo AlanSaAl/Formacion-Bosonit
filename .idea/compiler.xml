@@ -24,6 +24,12 @@
         <module name="examen_JPA_cascada" />
         <module name="block11-upload-download-files" />
       </profile>
+      <profile name="Annotation profile for block13-mongodb" enabled="true">
+        <sourceOutputDir name="../../block13-mongodb/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../../block13-mongodb/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="block13-mongodb" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Prueba" target="19" />
@@ -35,6 +41,7 @@
       <module name="block11-upload-download-files" options="-parameters" />
       <module name="block12-kafka-consumidor" options="-parameters" />
       <module name="block12-kafka-emisor" options="-parameters" />
+      <module name="block13-mongodb" options="-parameters" />
       <module name="block5-command-line-runner" options="-parameters" />
       <module name="block5-logging" options="-parameters" />
       <module name="block5-profiles" options="-parameters" />

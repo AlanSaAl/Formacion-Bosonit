@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -28,9 +28,9 @@ public class PersonaInputDto {
 
     boolean active;
 
-    Date created_date;
+    LocalDate created_date;
 
     String imagen_url;
 
-    Date termination_date;
+    LocalDate termination_date;
 }
