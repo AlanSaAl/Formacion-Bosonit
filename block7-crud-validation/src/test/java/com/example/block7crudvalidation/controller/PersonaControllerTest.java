@@ -1,4 +1,4 @@
-package com.example.block7crudvalidation;
+package com.example.block7crudvalidation.controller;
 
 import com.example.block7crudvalidation.controller.dto.PersonaInputDto;
 import com.example.block7crudvalidation.controller.dto.PersonaOutputDto;
