@@ -44,24 +44,26 @@ public class PersonaServiceImpl implements IPersonaService{
     }
 
     @Override
-    public Persona addPersona(PersonaInputDto personaInput) {
+    public PersonaOutputDto addPersona(PersonaInputDto personaInput) {
         validarDatosPersona(personaInput);
         Persona persona = IPersonaMapper.mapper.personaInputDtoToPersona(personaInput);
-        return personaRepository.save(persona);
+        personaRepository.save(persona);
+        return IPersonaMapper.mapper.personaToPersonaOutputDto(persona);
     }
 
     @Override
-    public Persona getPersonaById(int id) {
+    public Persona getPersonaById(int idPersona) {
         try {
-            return personaRepository.findById(id).orElseThrow();
+            return personaRepository.findById(idPersona).orElseThrow();
         } catch (NoSuchElementException e) {
-            throw new EntityNotFoundException("No se encontró el id: " + id);
+            throw new EntityNotFoundException("No se encontró el id: " + idPersona);
         }
     }
 
     @Override
-    public Persona getPersonaByUsuario(String usuario) {
-        return personaRepository.findByUsuario(usuario);
+    public PersonaOutputDto getPersonaByUsuario(String usuario) {
+        Persona persona = personaRepository.findByUsuario(usuario);
+        return IPersonaMapper.mapper.personaToPersonaOutputDto(persona);
     }
 
     @Override
@@ -71,10 +73,17 @@ public class PersonaServiceImpl implements IPersonaService{
     }
 
     @Override
-    public void deletePersona(int id) {
+    public PersonaOutputDto modifyPersonaById(int idPersona, PersonaInputDto personaInput) {
+        getPersonaById(idPersona);
+        personaInput.setId(idPersona);
+        return addPersona(personaInput);
+    }
+
+    @Override
+    public void deletePersona(int idPersona) {
         try {
-            personaRepository.findById(id).orElseThrow();
-            personaRepository.deleteById(id);
+            personaRepository.findById(idPersona).orElseThrow();
+            personaRepository.deleteById(idPersona);
         } catch (NoSuchElementException e) {
             throw new EntityNotFoundException(e.getMessage());
         }

@@ -8,10 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface IPersonaService {
-    Persona addPersona(PersonaInputDto persona);
-    Persona getPersonaById(int id);
-    Persona getPersonaByUsuario(String usuario);
+    PersonaOutputDto addPersona(PersonaInputDto persona);
+    Persona getPersonaById(int idPersona);
+    PersonaOutputDto getPersonaByUsuario(String usuario);
     List<PersonaOutputDto> getAllPersonas(int pageNumber, int pageSize);
-    void deletePersona(int id);
+    PersonaOutputDto modifyPersonaById(int idPersona, PersonaInputDto personaInput);
+    void deletePersona(int idPersona);
     Iterable<PersonaOutputDto> getPersonaByFields(HashMap<String, Object> conditions, String orderBy, int pageNumber, int pageSize);
 }

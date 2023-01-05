@@ -28,7 +28,7 @@ public class PersonaController {
     @CrossOrigin(origins = "https://cdpn.io/")
     @PostMapping
     public ResponseEntity<PersonaOutputDto> addPersona(@RequestBody PersonaInputDto personaInput) {
-        return ResponseEntity.ok().body(IPersonaMapper.mapper.personaToPersonaOutputDto(personaService.addPersona(personaInput)));
+        return ResponseEntity.ok().body(personaService.addPersona(personaInput));
     }
 
     @GetMapping("id/{id}")
@@ -39,7 +39,7 @@ public class PersonaController {
 
     @GetMapping("usuario/{usuario}")
     public PersonaOutputDto getPersonaByUsuario(@PathVariable String usuario) {
-        return IPersonaMapper.mapper.personaToPersonaOutputDto(personaService.getPersonaByUsuario(usuario));
+        return personaService.getPersonaByUsuario(usuario);
     }
 
     @CrossOrigin(origins = "https://cdpn.io/")
@@ -49,10 +49,9 @@ public class PersonaController {
         return personaService.getAllPersonas(pageNumber, pageSize);
     }
 
-    @PutMapping
-    public ResponseEntity<PersonaOutputDto> updatePersona(@RequestBody PersonaInputDto personaInput) {
-        personaService.getPersonaById(personaInput.getId());
-        return ResponseEntity.ok().body(IPersonaMapper.mapper.personaToPersonaOutputDto(personaService.addPersona(personaInput)));
+    @PutMapping("actualizar/{idPersona}")
+    public ResponseEntity<PersonaOutputDto> modifyPersonaById(@PathVariable int idPersona, @RequestBody PersonaInputDto personaInput) {
+        return ResponseEntity.ok().body(personaService.modifyPersonaById(idPersona, personaInput));
 
     }
 
