@@ -33,6 +33,8 @@ public class PersonaOutputDto {
 
     LocalDate termination_date;
 
+    boolean admin;
+
     // Sobreescritura del método equals para poder comprobar en los test que los valores de dos objetos son iguales
     @Override
     public boolean equals(Object obj) {

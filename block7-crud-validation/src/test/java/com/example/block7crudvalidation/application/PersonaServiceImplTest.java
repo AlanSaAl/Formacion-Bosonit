@@ -132,7 +132,7 @@ class PersonaServiceImplTest {
         Persona persona = crearPersona();
         PersonaOutputDto personaEsperado = IPersonaMapper.mapper.personaToPersonaOutputDto(persona);
 
-        when(personaRepository.findByUsuario(persona.getUsuario())).thenReturn(persona);
+        when(personaRepository.findByUsuario(persona.getUsuario()).get()).thenReturn(persona);
         PersonaOutputDto personaObtenido = assertDoesNotThrow(() -> personaService.getPersonaByUsuario(persona.getUsuario()));
         assertEquals(personaEsperado, personaObtenido);
         verify(personaRepository, atLeastOnce()).findByUsuario(personaEsperado.getUsuario());

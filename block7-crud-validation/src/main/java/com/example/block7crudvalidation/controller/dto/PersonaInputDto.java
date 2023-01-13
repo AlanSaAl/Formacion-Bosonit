@@ -31,4 +31,6 @@ public class PersonaInputDto {
     String imagen_url;
 
     LocalDate termination_date;
+
+    boolean admin;
 }

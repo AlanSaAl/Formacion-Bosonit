@@ -9,6 +9,7 @@ import com.example.block7crudvalidation.mapper.IPersonaMapper;
 import com.example.block7crudvalidation.repository.IPersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -47,6 +48,7 @@ public class PersonaServiceImpl implements IPersonaService{
     public PersonaOutputDto addPersona(PersonaInputDto personaInput) {
         validarDatosPersona(personaInput);
         Persona persona = IPersonaMapper.mapper.personaInputDtoToPersona(personaInput);
+        persona.setPassword(new BCryptPasswordEncoder().encode(persona.getPassword()));
         personaRepository.save(persona);
         return IPersonaMapper.mapper.personaToPersonaOutputDto(persona);
     }
@@ -62,7 +64,7 @@ public class PersonaServiceImpl implements IPersonaService{
 
     @Override
     public PersonaOutputDto getPersonaByUsuario(String usuario) {
-        Persona persona = personaRepository.findByUsuario(usuario);
+        Persona persona = personaRepository.findByUsuario(usuario).orElseThrow();
         return IPersonaMapper.mapper.personaToPersonaOutputDto(persona);
     }
 

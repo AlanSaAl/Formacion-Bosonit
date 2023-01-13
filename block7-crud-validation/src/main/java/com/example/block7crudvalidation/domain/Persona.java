@@ -42,6 +42,8 @@ public class Persona {
 
     private LocalDate termination_date;
 
+    private boolean admin;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Student student;
 
