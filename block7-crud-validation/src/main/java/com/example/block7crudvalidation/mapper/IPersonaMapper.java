@@ -7,7 +7,7 @@ import com.example.block7crudvalidation.domain.Persona;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper
+@Mapper(uses = {IStudentMapper.class, IProfesorMapper.class})
 public interface IPersonaMapper {
     IPersonaMapper mapper = Mappers.getMapper(IPersonaMapper.class);
     Persona personaInputDtoToPersona(PersonaInputDto personaInput);
