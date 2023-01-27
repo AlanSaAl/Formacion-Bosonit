@@ -1,0 +1,39 @@
+version: "3.2"
+
+services:
+  eureka:
+    image: eureka:1
+    container_name: eureka
+    networks:
+      - cloudnetwork
+    ports:
+      - "8761:8761"
+  tripbackend:
+    image: tripbackend:1
+    container_name: tripbackend
+    networks:
+      - cloudnetwork
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eureka
+  tripfrontend:
+    image: tripfrontend:1
+    container_name: tripfrontend
+    networks:
+      - cloudnetwork
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka
+      - tripbackend
+  apigateway:
+    image: apigateway:1
+    container_name: apigateway
+    networks:
+      - cloudnetwork
+    ports:
+      - "9000:9000"
+networks:
+  cloudnetwork:
+    driver: bridge

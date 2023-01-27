@@ -11,6 +11,14 @@
     <file url="file://$PROJECT_DIR$/block12-kafka/block12-kafka-emisor/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/block13-mongodb/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/block13-mongodb/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/block16-spring-cloud/api-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/block16-spring-cloud/api-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/block16-spring-cloud/netflix-eureka-naming-server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/block16-spring-cloud/netflix-eureka-naming-server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/block16-spring-cloud/trip-backend/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/block16-spring-cloud/trip-backend/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/block16-spring-cloud/trip-frontend/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/block16-spring-cloud/trip-frontend/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/block3-maven-package/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/block3-maven-package/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/block5-command-line-runner/src/main/java" charset="UTF-8" />
@@ -35,6 +43,8 @@
     <file url="file://$PROJECT_DIR$/../block10-dockerize-app/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../block11-upload-download-files/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../block13-mongodb/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../block16-spring-cloud/api-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../block16-spring-cloud/trip-frontend/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../block7-crud-validation/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../examen_JPA_cascada/src/main/java" charset="UTF-8" />
   </component>

@@ -10,10 +10,10 @@ spring:
     gateway:
       routes:
         - id: trip-backend
-          uri: http://localhost:8080
+          uri: http://tripbackend:8080
           predicates:
            - Path=/cliente,/viaje
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka:8761/eureka/

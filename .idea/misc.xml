@@ -36,6 +36,14 @@
         <option value="$PROJECT_DIR$/block12-kafka/block12-kafka-emisor/pom.xml" />
         <option value="$PROJECT_DIR$/../block13-mongodb/pom.xml" />
         <option value="$PROJECT_DIR$/block13-mongodb/pom.xml" />
+        <option value="$PROJECT_DIR$/../block16-spring-cloud/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/../block16-spring-cloud/netflix-eureka-naming-server/pom.xml" />
+        <option value="$PROJECT_DIR$/../block16-spring-cloud/trip-backend/pom.xml" />
+        <option value="$PROJECT_DIR$/../block16-spring-cloud/trip-frontend/pom.xml" />
+        <option value="$PROJECT_DIR$/block16-spring-cloud/trip-backend/pom.xml" />
+        <option value="$PROJECT_DIR$/block16-spring-cloud/trip-frontend/pom.xml" />
+        <option value="$PROJECT_DIR$/block16-spring-cloud/api-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/block16-spring-cloud/netflix-eureka-naming-server/pom.xml" />
       </list>
     </option>
   </component>
